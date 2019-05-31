@@ -1,0 +1,31 @@
+{ 
+  "schema" : "v2",
+  "variables" : [ 
+  { 
+    "type" : "int",
+    "defaultValue" : 42,
+    "description" : "The time a wait stage shall pauseth",
+    "name" : "waitTime"
+  } 
+  ],  
+  "id" : "my-template",
+  "protect" : false,
+  "metadata" : {
+    "name" : "Variable Wait", 
+    "description" : "A demonstrative Wait Pipeline.",
+    "owner" : "elvis.cai@airwallex.com",
+    "scopes" : ["global"]
+  },
+  "pipeline": { 
+    "stages" : [
+    {
+      "waitTime" : "${ templateVariables.waitTime }",
+      "name": "My Wait Stage",
+      "type" : "wait",
+      "refId" : "wait1",
+      "requisiteStageRefIds": []
+    }
+    ]
+  }
+}
+
